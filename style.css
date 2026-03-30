@@ -314,3 +314,138 @@ Live: https://yourusername.github.io/ai-portfolio/
         justify-content: center;
     }
 }
+
+/* Chatbot Styles */
+#chatbot-widget {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    z-index: 1000;
+}
+
+#chatbot-toggle {
+    width: 60px;
+    height: 60px;
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+    transition: all 0.3s ease;
+}
+
+#chatbot-toggle:hover {
+    transform: scale(1.1);
+}
+
+#chatbot-toggle span {
+    font-size: 24px;
+}
+
+#chatbot-container {
+    position: absolute;
+    bottom: 80px;
+    right: 0;
+    width: 350px;
+    height: 500px;
+    background: white;
+    border-radius: 16px;
+    box-shadow: 0 8px 32px rgba(0,0,0,0.2);
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+}
+
+#chatbot-header {
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    color: white;
+    padding: 16px 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+#chatbot-header h3 {
+    margin: 0;
+    font-size: 1.2rem;
+}
+
+#chatbot-close {
+    background: none;
+    border: none;
+    color: white;
+    font-size: 24px;
+    cursor: pointer;
+    padding: 0;
+}
+
+#chatbot-messages {
+    flex: 1;
+    padding: 16px;
+    overflow-y: auto;
+    background: #f8f9fa;
+}
+
+.message {
+    margin-bottom: 12px;
+    padding: 8px 12px;
+    border-radius: 8px;
+    max-width: 80%;
+}
+
+.message.user {
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    color: white;
+    margin-left: auto;
+    text-align: right;
+}
+
+.message.bot {
+    background: white;
+    color: #333;
+    border: 1px solid #e1e5e9;
+}
+
+#chatbot-input-container {
+    display: flex;
+    padding: 16px;
+    background: white;
+    border-top: 1px solid #e1e5e9;
+}
+
+#chatbot-input {
+    flex: 1;
+    padding: 8px 12px;
+    border: 1px solid #e1e5e9;
+    border-radius: 20px;
+    outline: none;
+}
+
+#chatbot-send {
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    color: white;
+    border: none;
+    padding: 8px 16px;
+    border-radius: 20px;
+    margin-left: 8px;
+    cursor: pointer;
+    transition: transform 0.2s ease;
+}
+
+#chatbot-send:hover {
+    transform: scale(1.05);
+}
+
+.hidden {
+    display: none;
+}
+
+@media (max-width: 480px) {
+    #chatbot-container {
+        width: 300px;
+        height: 400px;
+        bottom: 70px;
+    }
+}

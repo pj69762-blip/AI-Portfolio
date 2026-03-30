@@ -49,6 +49,79 @@ document.querySelectorAll('.project-card').forEach(card => {
     });
 });
 
+// Chatbot functionality
+const chatbotToggle = document.getElementById('chatbot-toggle');
+const chatbotContainer = document.getElementById('chatbot-container');
+const chatbotClose = document.getElementById('chatbot-close');
+const chatbotInput = document.getElementById('chatbot-input');
+const chatbotSend = document.getElementById('chatbot-send');
+const chatbotMessages = document.getElementById('chatbot-messages');
+
+// Toggle chatbot
+chatbotToggle.addEventListener('click', () => {
+    chatbotContainer.classList.toggle('hidden');
+});
+
+// Close chatbot
+chatbotClose.addEventListener('click', () => {
+    chatbotContainer.classList.add('hidden');
+});
+
+// Send message
+function sendMessage() {
+    const message = chatbotInput.value.trim();
+    if (message) {
+        addMessage(message, 'user');
+        chatbotInput.value = '';
+        setTimeout(() => {
+            const response = getBotResponse(message);
+            addMessage(response, 'bot');
+        }, 500);
+    }
+}
+
+chatbotSend.addEventListener('click', sendMessage);
+chatbotInput.addEventListener('keypress', (e) => {
+    if (e.key === 'Enter') {
+        sendMessage();
+    }
+});
+
+// Add message to chat
+function addMessage(text, sender) {
+    const messageDiv = document.createElement('div');
+    messageDiv.className = `message ${sender}`;
+    messageDiv.textContent = text;
+    chatbotMessages.appendChild(messageDiv);
+    chatbotMessages.scrollTop = chatbotMessages.scrollHeight;
+}
+
+// Bot responses
+function getBotResponse(message) {
+    const lowerMessage = message.toLowerCase();
+    
+    if (lowerMessage.includes('hello') || lowerMessage.includes('hi')) {
+        return "Hello! I'm Priyal's AI assistant. How can I help you learn more about their portfolio?";
+    } else if (lowerMessage.includes('skills') || lowerMessage.includes('technologies')) {
+        return "Priyal has skills in Python, TensorFlow, PyTorch, Machine Learning, Deep Learning, Computer Vision, NLP, and Data Science. They're currently learning more in their first year!";
+    } else if (lowerMessage.includes('projects')) {
+        return "Priyal is working on AI projects including image recognition, chatbots with NLP, and predictive analytics. As a first-year student, they're building their portfolio with exciting projects!";
+    } else if (lowerMessage.includes('experience')) {
+        return "Priyal is a first-year B.Tech student in AIML at Chhatrapati Shivaji Maharaj University. They're passionate about AI and actively participating in hackathons and developing innovative solutions.";
+    } else if (lowerMessage.includes('contact') || lowerMessage.includes('email')) {
+        return "You can contact Priyal at priyal.jain@example.com or check out their LinkedIn, GitHub, and Twitter profiles!";
+    } else if (lowerMessage.includes('bye') || lowerMessage.includes('goodbye')) {
+        return "Goodbye! Feel free to chat again if you have more questions about Priyal's portfolio.";
+    } else {
+        return "That's interesting! I'm still learning, but Priyal is passionate about AI and software engineering. What specific aspect of their work would you like to know more about?";
+    }
+}
+
+// Initialize with welcome message
+setTimeout(() => {
+    addMessage("Hi there! 👋 I'm Priyal's AI assistant. Ask me about their skills, projects, or experience!", 'bot');
+}, 1000);
+
 // Skill tags animation
 document.querySelectorAll('.skill-tag').forEach((tag, index) => {
     tag.style.animationDelay = `${index * 0.1}s`;
