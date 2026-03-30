@@ -127,23 +127,76 @@ function addMessage(text, sender) {
 function getBotResponse(message) {
     const lowerMessage = message.toLowerCase();
     
-    // More comprehensive responses
+    // Helper function to get random response from array
+    function getRandomResponse(responses) {
+        return responses[Math.floor(Math.random() * responses.length)];
+    }
+    
+    // More comprehensive responses with variations
     if (lowerMessage.includes('hello') || lowerMessage.includes('hi') || lowerMessage.includes('hey')) {
-        return "Hello! 👋 I'm Priyal's AI assistant. How can I help you learn more about their portfolio?";
+        const greetings = [
+            "Hello! 👋 I'm Priyal's AI assistant. How can I help you learn more about their portfolio?",
+            "Hi there! 😊 I'm here to tell you about Priyal's amazing work in AI and software engineering.",
+            "Hey! Welcome to Priyal's portfolio. I'm their AI assistant - what would you like to know?",
+            "Greetings! I'm Priyal's virtual assistant. Ask me anything about their skills and projects!"
+        ];
+        return getRandomResponse(greetings);
     } else if (lowerMessage.includes('skills') || lowerMessage.includes('technologies') || lowerMessage.includes('tech')) {
-        return "Priyal has skills in Python, TensorFlow, PyTorch, Machine Learning, Deep Learning, Computer Vision, NLP, and Data Science. They're currently learning more in their first year!";
+        const skills = [
+            "Priyal has skills in Python, TensorFlow, PyTorch, Machine Learning, Deep Learning, Computer Vision, NLP, and Data Science. They're currently learning more in their first year!",
+            "Priyal is proficient in Python, TensorFlow, PyTorch, and various AI/ML frameworks. As a first-year student, they're rapidly expanding their technical expertise!",
+            "Priyal specializes in AI technologies including Python, TensorFlow, PyTorch, Computer Vision, and NLP. They're passionate about mastering these tools!",
+            "Priyal's technical stack includes Python, TensorFlow, PyTorch, Machine Learning algorithms, and Data Science tools. They're always learning new technologies!"
+        ];
+        return getRandomResponse(skills);
     } else if (lowerMessage.includes('projects') || lowerMessage.includes('work')) {
-        return "Priyal is working on AI projects including image recognition, chatbots with NLP, and predictive analytics. As a first-year student, they're building their portfolio with exciting projects!";
+        const projects = [
+            "Priyal is working on AI projects including image recognition, chatbots with NLP, and predictive analytics. As a first-year student, they're building their portfolio with exciting projects!",
+            "Priyal has developed AI image recognition systems, intelligent chatbots, and predictive analytics models. Check out their projects section for more details!",
+            "Priyal's portfolio includes AI chatbot development, computer vision projects, and machine learning models for data analysis. They're just getting started!",
+            "Priyal is passionate about AI projects! They've worked on image recognition, NLP chatbots, and predictive analytics - all showcased in their portfolio."
+        ];
+        return getRandomResponse(projects);
     } else if (lowerMessage.includes('experience') || lowerMessage.includes('background')) {
-        return "Priyal is a first-year B.Tech student in AIML at Chhatrapati Shivaji Maharaj University. They're passionate about AI and actively participating in hackathons and developing innovative solutions.";
+        const experience = [
+            "Priyal is a first-year B.Tech student in AIML at Chhatrapati Shivaji Maharaj University. They're passionate about AI and actively participating in hackathons and developing innovative solutions.",
+            "Priyal is currently in their first year of B.Tech in Artificial Intelligence and Machine Learning at Chhatrapati Shivaji Maharaj University. They're eager to make an impact in AI!",
+            "As a first-year AIML student at Chhatrapati Shivaji Maharaj University, Priyal is building a strong foundation in AI while participating in hackathons and collaborative projects.",
+            "Priyal is a dedicated first-year student pursuing B.Tech in AIML. They're actively engaged in AI communities and working on innovative solutions."
+        ];
+        return getRandomResponse(experience);
     } else if (lowerMessage.includes('contact') || lowerMessage.includes('email') || lowerMessage.includes('reach')) {
-        return "You can contact Priyal at priyal.jain@example.com or check out their LinkedIn, GitHub, and Twitter profiles!";
+        const contact = [
+            "You can contact Priyal at priyal.jain@example.com or check out their LinkedIn, GitHub, and Twitter profiles!",
+            "Reach out to Priyal via email at priyal.jain@example.com. You can also find them on LinkedIn, GitHub, and Twitter!",
+            "Priyal's email is priyal.jain@example.com. Don't forget to check their social media profiles on LinkedIn, GitHub, and Twitter!",
+            "For inquiries, email Priyal at priyal.jain@example.com. Connect with them professionally on LinkedIn or see their code on GitHub!"
+        ];
+        return getRandomResponse(contact);
     } else if (lowerMessage.includes('bye') || lowerMessage.includes('goodbye') || lowerMessage.includes('see you')) {
-        return "Goodbye! 👋 Feel free to chat again if you have more questions about Priyal's portfolio.";
+        const goodbyes = [
+            "Goodbye! 👋 Feel free to chat again if you have more questions about Priyal's portfolio.",
+            "See you later! Don't hesitate to come back and ask more about Priyal's work.",
+            "Take care! Priyal's portfolio is always here if you want to learn more.",
+            "Bye for now! Thanks for chatting about Priyal's AI journey."
+        ];
+        return getRandomResponse(goodbyes);
     } else if (lowerMessage.includes('name') || lowerMessage.includes('who')) {
-        return "I'm Priyal Jain's AI assistant! Priyal is a first-year Software Engineering student passionate about AI and machine learning.";
+        const names = [
+            "I'm Priyal Jain's AI assistant! Priyal is a first-year Software Engineering student passionate about AI and machine learning.",
+            "My name is Priyal's AI Assistant! I help visitors learn about Priyal's portfolio and AI projects.",
+            "I'm the AI assistant for Priyal Jain, a talented first-year student specializing in software engineering and AI.",
+            "You can call me Priyal's AI Helper! Priyal is a first-year B.Tech student focused on AI and machine learning."
+        ];
+        return getRandomResponse(names);
     } else if (lowerMessage.includes('thank') || lowerMessage.includes('thanks')) {
-        return "You're welcome! 😊 Is there anything else you'd like to know about Priyal's portfolio?";
+        const thanks = [
+            "You're welcome! 😊 Is there anything else you'd like to know about Priyal's portfolio?",
+            "Happy to help! Priyal's work is impressive - feel free to ask more questions.",
+            "No problem at all! Priyal is passionate about AI. What else interests you?",
+            "Glad I could help! Priyal's portfolio has so much more to explore."
+        ];
+        return getRandomResponse(thanks);
     } else {
         // More engaging default responses
         const defaultResponses = [
@@ -151,9 +204,12 @@ function getBotResponse(message) {
             "I'm here to help! Priyal specializes in AI and machine learning. What specific aspect interests you?",
             "Great question! Priyal is building an impressive portfolio. Would you like to know about their skills, projects, or experience?",
             "I love that you're interested in Priyal's work! They're passionate about AI innovation. What would you like to explore?",
-            "Thanks for chatting! Priyal is a talented first-year student. Ask me about their projects, skills, or background!"
+            "Thanks for chatting! Priyal is a talented first-year student. Ask me about their projects, skills, or background!",
+            "That's a good point! Priyal is always learning new things in AI. What particular area are you curious about?",
+            "Excellent question! Priyal's journey in AI is just beginning. Would you like details about their current projects?",
+            "I appreciate your interest! Priyal combines software engineering with AI expertise. What would you like to discuss?"
         ];
-        return defaultResponses[Math.floor(Math.random() * defaultResponses.length)];
+        return getRandomResponse(defaultResponses);
     }
 }
 
