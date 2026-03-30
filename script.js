@@ -127,27 +127,40 @@ function addMessage(text, sender) {
 function getBotResponse(message) {
     const lowerMessage = message.toLowerCase();
     
-    if (lowerMessage.includes('hello') || lowerMessage.includes('hi')) {
-        return "Hello! I'm Priyal's AI assistant. How can I help you learn more about their portfolio?";
-    } else if (lowerMessage.includes('skills') || lowerMessage.includes('technologies')) {
+    // More comprehensive responses
+    if (lowerMessage.includes('hello') || lowerMessage.includes('hi') || lowerMessage.includes('hey')) {
+        return "Hello! 👋 I'm Priyal's AI assistant. How can I help you learn more about their portfolio?";
+    } else if (lowerMessage.includes('skills') || lowerMessage.includes('technologies') || lowerMessage.includes('tech')) {
         return "Priyal has skills in Python, TensorFlow, PyTorch, Machine Learning, Deep Learning, Computer Vision, NLP, and Data Science. They're currently learning more in their first year!";
-    } else if (lowerMessage.includes('projects')) {
+    } else if (lowerMessage.includes('projects') || lowerMessage.includes('work')) {
         return "Priyal is working on AI projects including image recognition, chatbots with NLP, and predictive analytics. As a first-year student, they're building their portfolio with exciting projects!";
-    } else if (lowerMessage.includes('experience')) {
+    } else if (lowerMessage.includes('experience') || lowerMessage.includes('background')) {
         return "Priyal is a first-year B.Tech student in AIML at Chhatrapati Shivaji Maharaj University. They're passionate about AI and actively participating in hackathons and developing innovative solutions.";
-    } else if (lowerMessage.includes('contact') || lowerMessage.includes('email')) {
+    } else if (lowerMessage.includes('contact') || lowerMessage.includes('email') || lowerMessage.includes('reach')) {
         return "You can contact Priyal at priyal.jain@example.com or check out their LinkedIn, GitHub, and Twitter profiles!";
-    } else if (lowerMessage.includes('bye') || lowerMessage.includes('goodbye')) {
-        return "Goodbye! Feel free to chat again if you have more questions about Priyal's portfolio.";
+    } else if (lowerMessage.includes('bye') || lowerMessage.includes('goodbye') || lowerMessage.includes('see you')) {
+        return "Goodbye! 👋 Feel free to chat again if you have more questions about Priyal's portfolio.";
+    } else if (lowerMessage.includes('name') || lowerMessage.includes('who')) {
+        return "I'm Priyal Jain's AI assistant! Priyal is a first-year Software Engineering student passionate about AI and machine learning.";
+    } else if (lowerMessage.includes('thank') || lowerMessage.includes('thanks')) {
+        return "You're welcome! 😊 Is there anything else you'd like to know about Priyal's portfolio?";
     } else {
-        return "That's interesting! I'm still learning, but Priyal is passionate about AI and software engineering. What specific aspect of their work would you like to know more about?";
+        // More engaging default responses
+        const defaultResponses = [
+            "That's interesting! Tell me more about what you're looking for in Priyal's portfolio.",
+            "I'm here to help! Priyal specializes in AI and machine learning. What specific aspect interests you?",
+            "Great question! Priyal is building an impressive portfolio. Would you like to know about their skills, projects, or experience?",
+            "I love that you're interested in Priyal's work! They're passionate about AI innovation. What would you like to explore?",
+            "Thanks for chatting! Priyal is a talented first-year student. Ask me about their projects, skills, or background!"
+        ];
+        return defaultResponses[Math.floor(Math.random() * defaultResponses.length)];
     }
 }
 
-// Initialize with welcome message
-setTimeout(() => {
-    addMessage("Hi there! 👋 I'm Priyal's AI assistant. Ask me about their skills, projects, or experience!", 'bot');
-}, 1000);
+// Remove the automatic welcome message - let users initiate conversation
+// setTimeout(() => {
+//     addMessage("Hi there! 👋 I'm Priyal's AI assistant. Ask me about their skills, projects, or experience!", 'bot');
+// }, 1000);
 
 // Skill tags animation
 document.querySelectorAll('.skill-tag').forEach((tag, index) => {
