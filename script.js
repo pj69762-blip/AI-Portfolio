@@ -57,20 +57,38 @@ const chatbotInput = document.getElementById('chatbot-input');
 const chatbotSend = document.getElementById('chatbot-send');
 const chatbotMessages = document.getElementById('chatbot-messages');
 
-// Toggle chatbot
-chatbotToggle.addEventListener('click', () => {
-    chatbotContainer.classList.toggle('hidden');
+// Debug: Check if elements exist
+console.log('Chatbot elements:', {
+    toggle: chatbotToggle,
+    container: chatbotContainer,
+    close: chatbotClose,
+    input: chatbotInput,
+    send: chatbotSend,
+    messages: chatbotMessages
 });
 
+// Toggle chatbot
+if (chatbotToggle) {
+    chatbotToggle.addEventListener('click', () => {
+        console.log('Toggle clicked');
+        chatbotContainer.classList.toggle('hidden');
+    });
+}
+
 // Close chatbot
-chatbotClose.addEventListener('click', () => {
-    chatbotContainer.classList.add('hidden');
-});
+if (chatbotClose) {
+    chatbotClose.addEventListener('click', () => {
+        console.log('Close clicked');
+        chatbotContainer.classList.add('hidden');
+    });
+}
 
 // Send message
 function sendMessage() {
+    console.log('sendMessage called');
     const message = chatbotInput.value.trim();
     if (message) {
+        console.log('Sending message:', message);
         addMessage(message, 'user');
         chatbotInput.value = '';
         setTimeout(() => {
@@ -80,12 +98,21 @@ function sendMessage() {
     }
 }
 
-chatbotSend.addEventListener('click', sendMessage);
-chatbotInput.addEventListener('keypress', (e) => {
-    if (e.key === 'Enter') {
+if (chatbotSend) {
+    chatbotSend.addEventListener('click', () => {
+        console.log('Send button clicked');
         sendMessage();
-    }
-});
+    });
+}
+
+if (chatbotInput) {
+    chatbotInput.addEventListener('keypress', (e) => {
+        if (e.key === 'Enter') {
+            console.log('Enter pressed');
+            sendMessage();
+        }
+    });
+}
 
 // Add message to chat
 function addMessage(text, sender) {
